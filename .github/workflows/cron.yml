@@ -1,9 +1,8 @@
 name: Cron pipeline
 
 on:
-  push:
-    branches:
-      - master
+  schedule:
+    - cron: '5 * * * *'
 
 jobs:
   cron_pipeline:
