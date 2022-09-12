@@ -51,7 +51,8 @@ jobs:
         if: ${{ success() }}
         with:
           severity: info
-          details: Build Succeeded!
+          text: A new version of Pokedex deployed
+          details: to https://fullstack-11.herokuapp.com by ${{ github.event.sender.login }}
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
       - name: Build Failure
@@ -59,7 +60,9 @@ jobs:
         if: ${{ failure() }}
         with:
           severity: error
-          details: Build Failed!
+          text: Build Failed
+          description: commit
+          details: https://github.com/asnabryg/full-stack-open-pokedex/commit/${{ github.sha }} by ${{ github.event.sender.login }} broke the build :(
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
   tag_release:
